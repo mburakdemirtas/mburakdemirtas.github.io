@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak Demirtaş | Product Designer</title>
+    <style>
+        /* NEO-BRUTALISM RESET & BASE STYLES */
+        :root {
+            --bg-color: #f4f3ee;
+            --main-text: #0d0d0d;
+            --accent-yellow: #ffdc5e;
+            --accent-purple: #c3a6ff;
+            --accent-blue: #a3d5ff;
+            --accent-red: #ff8fa3;
+            --border-width: 3px;
+            --shadow-offset: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Arial Black', 'Helvetica', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-top: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* LAYOUT UTILITIES */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        /* BRUTALIST COMPONENTS */
+        .box {
+            background: #fff;
+            border: var(--border-width) solid var(--main-text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--main-text);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0px var(--main-text);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--main-text);
+            color: #fff;
+            padding: 12px 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: var(--border-width) solid var(--main-text);
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: var(--main-text);
+            box-shadow: 4px 4px 0px var(--main-text);
+        }
+
+        .btn-primary { background: var(--accent-yellow); color: var(--main-text); }
+        .btn-secondary { background: var(--accent-purple); color: var(--main-text); }
+        .btn-linkedin { background: #0077b5; color: white; }
+        
+        /* HEADER */
+        header {
+            border-bottom: var(--border-width) solid var(--main-text);
+            padding: 40px 0;
+            background: var(--accent-blue);
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            background: var(--main-text);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            transform: rotate(-2deg);
+        }
+
+        /* EXPERIENCE TIMELINE */
+        .job-item {
+            border-left: var(--border-width) solid var(--main-text);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .job-item::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: var(--accent-red);
+            border: var(--border-width) solid var(--main-text);
+            position: absolute;
+            left: -10.5px;
+            top: 5px;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            background: var(--accent-yellow);
+            display: inline-block;
+            padding: 2px 8px;
+            border: 2px solid var(--main-text);
+            margin-bottom: 5px;
+        }
+
+        .company-date {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* PROJECTS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: var(--border-width) solid var(--main-text);
+            box-shadow: 6px 6px 0px var(--main-text);
+        }
+
+        .project-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            border-bottom: var(--border-width) solid var(--main-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #555;
+            background-image: repeating-linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), repeating-linear-gradient(45deg, #ddd 25%, #f4f3ee 25%, #f4f3ee 75%, #ddd 75%, #ddd);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            border: 1px solid var(--main-text);
+            padding: 2px 6px;
+            margin-right: 5px;
+            border-radius: 20px; /* Slight contrast to sharp edges */
+        }
+
+        /* CONTACT */
+        .contact-bar {
+            background: var(--main-text);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="hero-title">BURAK DEMİRTAŞ</h1>
+            <div class="hero-subtitle">PRODUCT DESIGNER & SPECIALIST</div>
+            <p style="max-width: 600px; margin: 20px auto; font-weight: bold;">
+                CS Engineering Background • UX/UI Focus • AI Prompting • Ankara
+            </p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.linkedin.com/in/mburakdemirtas/" target="_blank" class="btn btn-linkedin">LinkedIn</a>
+                <a href="mailto:muburakdemirtas@gmail.com" class="btn btn-primary">Bana Ulaş</a>
+                <a href="#projects" class="btn btn-secondary">Projeleri Gör</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="section" style="margin-top: 50px;">
+            <div class="box" style="background-color: var(--accent-purple);">
+                <h2>Hakkımda</h2>
+                <p>
+                    Hacettepe Üniversitesi Bilgisayar Mühendisliği mezunuyum. Tasarım ve yazılım arasındaki köprüyü kurma konusunda uzmanım. 
+                    Ürün yaşam döngüsünün başından sonuna kadar (fikir aşamasından canlıya çıkışa) sorumluluk almayı seviyorum. 
+                    Jotform, Brandefense ve Mobiversite gibi şirketlerde ürün tasarımı, veri görselleştirme ve UX araştırması üzerine çalıştım.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="border-bottom: 5px solid black; display: inline-block;">Deneyim</h2>
+            <br><br>
+            
+            <div class="box">
+                <div class="job-item">
+                    <div class="job-title">Product Specialist</div>
+                    <span class="company-date">Mobiversite | Kasım 2025 - Şubat 2026</span>
+                    <p>Fikir aşamasından canlıya kadar uçtan uca ürün yönetimi. KAI (iOS/Android) ve Vinyl Value uygulamalarının sıfırdan yaratılması. ASO stratejileri, rakip analizi ve AI prompt optimizasyonu.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-title">Product Designer</div>
+                    <span class="company-date">Brandefense | Eylül 2024 - Ağustos 2025</span>
+                    <p>Siber güvenlik platformları için veri sızıntısı ve tehdit tespiti arayüzleri tasarımı. UI tutarlılığı için modüler tasarım sistemi inşası.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-title">Jr. Product Designer</div>
+                    <span class="company-date">Jotform | Ekim 2022 - Eylül 2024</span>
+                    <p>Veri görselleştirme, dashboardlar, dahili araçlar ve tasarım sistemleri üzerine çalışmalar. Frontend geliştiricilerle yakın işbirliği.</p>
+                </div>
+                
+                <div class="job-item">
+                    <div class="job-title">Internships</div>
+                    <span class="company-date">Jotform, Pixofun, Netax | 2020 - 2022</span>
+                    <p>Farklı staj dönemlerinde UI/UX tasarımı, oyun geliştirme ve yazılım geliştirme üzerine pratik deneyimler.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <h2 style="border-bottom: 5px solid black; display: inline-block; margin-bottom: 20px;">Seçili Projeler</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img-placeholder">GÖRSEL EKLENECEK</div>
+                    <div class="project-content">
+                        <h3>Nasıl Yani App</h3>
+                        <p style="font-size: 0.9rem;">Yapay zeka tabanlı ilişki ve iletişim tavsiyesi uygulaması. Rakip analizi ve UI/UX tasarımı.</p>
+                        <div style="margin: 10px 0;">
+                            <span class="tag">Figma</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="font-size: 0.8rem;">İncele</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-placeholder">GÖRSEL EKLENECEK</div>
+                    <div class="project-content">
+                        <h3>Guess What Game</h3>
+                        <div style="margin: 10px 0;">
+                            <span class="tag">Game UI</span>
+                            <span class="tag">Prototyping</span>
+                        </div>
+                        <p style="font-size: 0.9rem;">AI tabanlı kelime tahmin oyunu. Tel kafes (wireframe) ve akış tasarımları.</p>
+                        <a href="#" class="btn btn-primary" style="font-size: 0.8rem;">İncele</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-placeholder">GÖRSEL EKLENECEK</div>
+                    <div class="project-content">
+                        <h3>G-Tower Landing</h3>
+                        <div style="margin: 10px 0;">
+                            <span class="tag">Web Design</span>
+                            <span class="tag">Conversion</span>
+                        </div>
+                        <p style="font-size: 0.9rem;">Müşteri dönüşüm oranını %32 artıran, kullanıcı dostu landing page tasarımı.</p>
+                        <a href="#" class="btn btn-primary" style="font-size: 0.8rem;">İncele</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p>...ve daha fazlası için Behance profilimi ziyaret edebilirsin.</p>
+                <a href="https://www.behance.net/" target="_blank" class="btn btn-secondary">Tüm Behance Projeleri</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="box" style="background-color: var(--accent-blue);">
+                <h2>Eğitim & Gönüllülük</h2>
+                <ul style="list-style-type: square;">
+                    <li><strong>Hacettepe Üniversitesi:</strong> Bilgisayar Mühendisliği (%100 İngilizce), 2017-2022</li>
+                    <li><strong>ACM Turkey:</strong> Başkan (2020-2021) - Türkiye genelindeki tüm ACM topluluklarının yönetimi.</li>
+                    <li><strong>ACM Hacettepe:</strong> Başkan Yardımcısı (2018-2021) - 3000+ üyeli topluluk yönetimi.</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="contact-bar">
+        <div class="container">
+            <h2>Birlikte Çalışalım</h2>
+            <p>Bir projen mi var? Kahve içip konuşalım.</p>
+            <br>
+            <a href="mailto:muburakdemirtas@gmail.com" class="btn btn-primary" style="border-color: white;">muburakdemirtas@gmail.com</a>
+            <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">
+                © 2026 Burak Demirtaş. Hand-coded via Gemini.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

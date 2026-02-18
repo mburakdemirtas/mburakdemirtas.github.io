@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak Demirtaş - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&family=Patrick+Hand&family=Abril+Fatface&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        /* ... (CSS AYNI, ÖNCEKİ KODUN STİL KISMINI KULLANABİLİRSİNİZ) ... */
+        /* KISACA ÖZET: */
+        :root { --bg-body: #f4f3ee; --bg-card: #ffffff; --text-main: #0d0d0d; --text-sec: #555555; --accent-main: #ffdc5e; --accent-sec: #a3d5ff; --border: 4px solid #0d0d0d; --shadow: 6px 6px 0 #0d0d0d; --shadow-hover: 10px 10px 0 #0d0d0d; --radius: 0px; --font-head: 'Arial Black', sans-serif; --font-body: 'Courier New', monospace; --cursor: auto; --backdrop: none; --bg-image: none; --nav-active-color: #fff; --nav-active-bg: #0d0d0d; }
+        
+        /* DİĞER TEMALAR (NOTEBOOK, LIQUID, 90S, 70S, 80S, 00S) BURADA OLACAK. 
+           (Önceki index.html kodundaki <style> bloğunu olduğu gibi kullan.) */
+        
+        /* TEKRAR ETMEMEK İÇİN BURAYI KISA GEÇİYORUM, LÜTFEN BİR ÖNCEKİ KODUN <STYLE> BLOĞUNU KULLANIN */
+        
+        /* Sadece .timeline-desc içindeki p ve ul ayarları: */
+        .timeline-desc ul { padding-left: 20px; margin: 10px 0; }
+        .timeline-desc li { margin-bottom: 5px; }
+        
+        /* ... Geri kalan stil aynı ... */
+        
+        /* Ben sana garanti olsun diye full CSS'i tekrar veriyorum: */
+        [data-theme="notebook"] { --bg-body: #fdfbf7; --bg-card: #fff; --text-main: #2c3e50; --text-sec: #555; --accent-main: #ff6b6b; --accent-sec: #feca57; --border: 2px solid #2c3e50; --shadow: 4px 4px 0 rgba(0,0,0,0.1); --shadow-hover: 6px 6px 0 rgba(0,0,0,0.2); --radius: 255px 15px 225px 15px / 15px 225px 15px 255px; --font-head: 'Patrick Hand', cursive; --font-body: 'Patrick Hand', cursive; --bg-image: repeating-linear-gradient(white 0px, white 24px, #a4b0be 25px); --nav-active-color: #fff; --nav-active-bg: #ff6b6b; }
+        [data-theme="liquid"] { --bg-body: #000000; --bg-card: rgba(30, 30, 30, 0.6); --text-main: #ffffff; --text-sec: #d1d1d6; --accent-main: #0a84ff; --accent-sec: rgba(255,255,255,0.1); --border: 1px solid rgba(255,255,255,0.1); --shadow: 0 10px 40px rgba(0,0,0,0.5); --shadow-hover: 0 20px 60px rgba(0,0,0,0.7); --radius: 24px; --font-head: 'Inter', sans-serif; --font-body: 'Inter', sans-serif; --backdrop: blur(40px) saturate(150%); --bg-image: radial-gradient(circle at 10% 20%, #1a0b2e 0%, transparent 40%), radial-gradient(circle at 90% 80%, #001529 0%, transparent 40%); --nav-active-color: #fff; --nav-active-bg: rgba(255,255,255,0.2); }
+        [data-theme="90s"] { --bg-body: #008080; --bg-card: #c0c0c0; --text-main: #000; --text-sec: #444; --accent-main: #000080; --accent-sec: #fff; --border: 2px solid #000; --shadow: 2px 2px 0 #000; --shadow-hover: none; --radius: 0; --font-head: 'Arial', sans-serif; --font-body: 'Times New Roman', serif; --bg-image: none; --cursor: auto; --nav-active-color: #fff; --nav-active-bg: #000080; }
+        [data-theme="70s"] { --bg-body: #FFF8E7; --bg-card: #FFFFFF; --text-main: #2D3436; --text-sec: #636e72; --accent-main: #E55039; --accent-sec: #F8C291; --border: 3px solid #2D3436; --shadow: 6px 6px 0 #74B9FF; --shadow-hover: 8px 8px 0 #0984e3; --radius: 12px; --font-head: 'Abril Fatface', cursive; --font-body: 'Inter', sans-serif; --bg-image: radial-gradient(#E55039 2px, transparent 2px); --bg-size: 30px 30px; --nav-active-color: #fff; --nav-active-bg: #E55039; }
+        [data-theme="80s"] { --bg-body: #090014; --bg-card: #120024; --text-main: #ff00de; --text-sec: #00f0ff; --accent-main: #ffe600; --accent-sec: #220033; --border: 2px solid #ff00de; --shadow: 0 0 10px #ff00de; --shadow-hover: 0 0 20px #00f0ff; --radius: 0; --font-head: 'Press Start 2P', cursive; --font-body: 'VT323', monospace; --bg-image: linear-gradient(transparent 95%, #ff00de 95%), linear-gradient(90deg, transparent 95%, #ff00de 95%); --bg-size: 40px 40px; --cursor: crosshair; --nav-active-color: #000; --nav-active-bg: #ff00de; }
+        [data-theme="00s"] { --bg-body: #ffffff; --bg-card: #f0f4f8; --text-main: #000; --text-sec: #555; --accent-main: #00ff00; --accent-sec: #dcdcdc; --border: 1px solid #999; --shadow: inset 1px 1px 3px #fff, inset -1px -1px 3px #aaa; --radius: 12px; --font-head: 'Orbitron', sans-serif; --font-body: 'Arial', sans-serif; --bg-image: repeating-linear-gradient(45deg, #f0f0f0 0, #f0f0f0 1px, #fff 1px, #fff 5px); --nav-active-color: #000; --nav-active-bg: #00ff00; }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background-color: var(--bg-body); background-image: var(--bg-image); background-size: var(--bg-size, auto); font-family: var(--font-body); color: var(--text-main); padding-bottom: 50px; overflow-y: scroll; cursor: var(--cursor); transition: background 0.3s ease; }
+        body[data-theme="80s"]::after { content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none; }
+        header { padding: 40px 20px 20px; background: var(--bg-card); border-bottom: var(--border); display: flex; justify-content: space-between; align-items: center; position: relative; backdrop-filter: var(--backdrop); flex-wrap: wrap; gap: 20px; }
+        .hero-left { display: flex; align-items: center; gap: 20px; }
+        .header-profile-img { width: 100px; height: 100px; object-fit: cover; border: var(--border); border-radius: 50%; box-shadow: 5px 5px 0 var(--accent-main); }
+        [data-theme="90s"] .header-profile-img { border-radius: 0; box-shadow: none; border: 2px inset #fff; }
+        [data-theme="liquid"] .header-profile-img { border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 0 20px rgba(10, 132, 255, 0.3); }
+        .hero-info h1 { font-family: var(--font-head); font-size: 3rem; line-height: 0.9; text-transform: uppercase; margin: 0; }
+        [data-theme="liquid"] h1 { text-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        .hero-subtitle { font-size: 1rem; margin-top: 10px; font-weight: bold; background: var(--accent-main); color: var(--text-main); display: inline-block; padding: 5px 10px; border: var(--border); box-shadow: var(--shadow); border-radius: var(--radius); }
+        [data-theme="90s"] .hero-subtitle { background: var(--accent-main); color: #fff; border: 2px inset #fff; box-shadow: none; }
+        [data-theme="liquid"] .hero-subtitle { background: rgba(10, 132, 255, 0.2); color: #0a84ff; border: none; }
+        .header-actions { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .action-btn, .style-select { height: 44px; display: flex; align-items: center; justify-content: center; border: var(--border); background: var(--bg-card); color: var(--text-main); box-shadow: var(--shadow); border-radius: var(--radius); cursor: pointer; padding: 0 15px; font-weight: bold; font-family: var(--font-body); text-decoration: none; backdrop-filter: var(--backdrop); transition: 0.2s; }
+        .action-btn:hover, .style-select:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hover); background: var(--accent-sec); }
+        .action-btn svg { width: 20px; height: 20px; fill: var(--text-main); margin-right: 8px; }
+        .icon-only { width: 44px; padding: 0; } .icon-only svg { margin: 0; }
+        [data-theme="90s"] .action-btn, [data-theme="90s"] .style-select { border-top: 2px solid #fff; border-left: 2px solid #fff; border-right: 2px solid #000; border-bottom: 2px solid #000; background: #c0c0c0; box-shadow: none; }
+        [data-theme="90s"] .action-btn:active { border-top: 2px solid #000; border-left: 2px solid #000; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: none; }
+        [data-theme="liquid"] .style-select option { background-color: #000; color: #fff; }
+        .lang-dropdown { position: relative; }
+        .lang-content { display: none; position: absolute; top: 100%; right: 0; background-color: var(--bg-card); min-width: 100px; border: var(--border); border-radius: var(--radius); z-index: 200; margin-top: 5px; backdrop-filter: var(--backdrop); box-shadow: var(--shadow); }
+        [data-theme="liquid"] .lang-content { background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(255,255,255,0.2); }
+        .lang-content a { display: flex; align-items: center; gap: 10px; padding: 10px; color: var(--text-main); text-decoration: none; font-weight: bold; cursor: pointer; }
+        .lang-content a:hover { background: var(--accent-sec); }
+        .show { display: block; }
+        .flag-icon { width: 20px; border: 1px solid #777; }
+        .main-nav { display: flex; border-bottom: var(--border); background: var(--bg-card); position: sticky; top: 0; z-index: 100; backdrop-filter: var(--backdrop); }
+        [data-theme="liquid"] .main-nav { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; top: 10px; margin: 0 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .nav-tab { flex: 1; text-align: center; padding: 20px; font-family: var(--font-head); font-size: 1.2rem; cursor: pointer; border-right: var(--border); color: var(--text-main); transition: 0.3s; }
+        .nav-tab:last-child { border-right: none; }
+        .nav-tab:hover { background: var(--accent-sec); }
+        .nav-tab.active { background: var(--nav-active-bg); color: var(--nav-active-color); }
+        [data-theme="90s"] .nav-tab.active { border: 2px inset #fff; }
+        [data-theme="liquid"] .nav-tab { border: none; }
+        [data-theme="liquid"] .nav-tab.active { background: rgba(255,255,255,0.2); border-radius: 16px; }
+        .content-section { display: none; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
+        .content-section.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .exp-container { max-width: 1000px; margin: 0 auto; }
+        .edu-vol-container { background: var(--bg-card); border: var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); position: relative; backdrop-filter: var(--backdrop); margin-bottom: 60px; min-height: 250px; }
+        [data-theme="notebook"] .edu-vol-container { background: #fff; transform: rotate(-1deg); }
+        .sub-nav { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--text-sec); padding-bottom: 10px; }
+        .sub-tab { font-family: var(--font-head); font-size: 1.1rem; cursor: pointer; padding: 5px 15px; opacity: 0.5; transition: 0.2s; color: var(--text-main); }
+        .sub-tab:hover { opacity: 0.8; }
+        .sub-tab.active { opacity: 1; border-bottom: 4px solid var(--accent-main); }
+        .info-content { display: none; animation: fadeIn 0.3s; }
+        .info-content.active { display: block; }
+        .info-item { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed var(--text-sec); }
+        .info-role { font-weight: bold; font-size: 1.2rem; }
+        .info-meta { font-size: 0.9rem; color: var(--text-sec); margin-bottom: 5px; }
+        .info-desc { font-size: 0.95rem; line-height: 1.5; }
+        .timeline-container { position: relative; margin-top: 20px; }
+        .timeline-container::before { content: ''; position: absolute; top: 0; left: 29px; width: 2px; height: 100%; background: var(--text-main); opacity: 0.3; }
+        .timeline-item { position: relative; margin-bottom: 50px; padding-left: 70px; }
+        .timeline-dot { position: absolute; left: 20px; top: 0; width: 20px; height: 20px; background: var(--accent-main); border: 2px solid var(--text-main); border-radius: 50%; z-index: 2; }
+        .timeline-date { display: inline-block; background: var(--text-main); color: var(--bg-card); padding: 4px 10px; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem; border-radius: var(--radius); }
+        [data-theme="liquid"] .timeline-date { background: rgba(255,255,255,0.2); color: #fff; }
+        .timeline-content { background: var(--bg-card); border: var(--border); border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow); transition: transform 0.2s; backdrop-filter: var(--backdrop); }
+        .timeline-content:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hover); }
+        .timeline-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .company-logo { width: 50px; height: 50px; object-fit: contain; background: #fff; border-radius: 8px; padding: 2px; border: 1px solid #eee; }
+        .timeline-role { font-family: var(--font-head); font-size: 1.5rem; margin: 0; }
+        .timeline-company { font-weight: bold; color: var(--text-sec); font-size: 1.1rem; }
+        .timeline-desc { line-height: 1.6; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .card { background: var(--bg-card); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; overflow: hidden; transition: 0.2s; backdrop-filter: var(--backdrop); position: relative; }
+        .card:hover { transform: translate(-4px, -4px); box-shadow: var(--shadow-hover); }
+        [data-theme="liquid"] .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); }
+        .card-media { height: 250px; border-bottom: var(--border); overflow: hidden; position: relative; }
+        .card-media img, .card-media video { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 20px; }
+        .card-title { font-family: var(--font-head); font-size: 1.4rem; margin: 10px 0 0 0; }
+        .card-cat { background: var(--accent-sec); color: var(--text-main); padding: 2px 8px; font-size: 0.8rem; font-weight: bold; border: 1px solid var(--text-main); }
+        [data-theme="liquid"] .card-cat { border: none; background: rgba(255,255,255,0.2); color: #fff; }
+        .video-indicator { position: absolute; top: 10px; right: 10px; width: 35px; height: 35px; background: rgba(0,0,0,0.7); border: 2px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 5; }
+        .video-indicator::after { content: ''; border-left: 12px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 4px; }
+        .life-layout { display: grid; grid-template-columns: 250px 1fr; gap: 40px; }
+        .life-bio img { width: 150px; height: 150px; object-fit: cover; border: var(--border); border-radius: 50%; box-shadow: 6px 6px 0 var(--accent-main); margin-bottom: 20px; }
+        [data-theme="liquid"] .life-bio img { border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 0 30px rgba(10,132,255,0.4); }
+        .life-bio h2 { font-family: var(--font-head); font-size: 2.5rem; margin-top: 0; }
+        .filter-buttons { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .filter-btn { background: var(--bg-card); border: var(--border); padding: 8px 16px; color: var(--text-main); font-weight: bold; cursor: pointer; border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: var(--backdrop); transition: 0.2s; }
+        .filter-btn:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hover); }
+        .filter-btn.active { background: var(--accent-main); color: var(--text-main); }
+        [data-theme="liquid"] .filter-btn.active { background: #0a84ff; color: #fff; }
+        .life-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .life-item { aspect-ratio: 1; border: var(--border); border-radius: var(--radius); position: relative; cursor: zoom-in; overflow: hidden; background: #000; }
+        .life-item img, .life-item video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: 0.3s; }
+        .life-item:hover img, .life-item:hover video { opacity: 1; transform: scale(1.05); }
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border: 4px solid #fff; }
+        .lb-btn { position: absolute; background: none; border: none; color: #fff; font-size: 3rem; cursor: pointer; padding: 20px; }
+        .lb-close { top: 20px; right: 20px; }
+        .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+        .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+        .lb-caption { position: absolute; bottom: 30px; background: #000; color: #fff; padding: 5px 15px; border: 2px solid #fff; }
+        @media (max-width: 900px) { .hero-left { flex-direction: column; text-align: center; } .life-layout, .edu-vol-grid { grid-template-columns: 1fr; } .timeline-item { padding-left: 40px; } .timeline-container::before { left: 10px; } .timeline-dot { left: 0; } }
+    </style>
+</head>
+<body data-theme="neo">
+
+    <header>
+        <div class="hero-left">
+            <img src="" class="header-profile-img" id="headerProfileImg">
+            <div class="hero-info">
+                <h1 id="userName">BURAK DEMİRTAŞ</h1>
+                <div class="hero-subtitle" id="userTitle">PRODUCT DESIGNER & SPECIALIST</div>
+            </div>
+        </div>
+        
+        <div class="header-actions">
+            <select id="styleSwitcher" class="style-select" onchange="changeTheme(this.value)">
+                <option value="neo">🎨 Neo-Brutalism</option>
+                <option value="notebook">📝 Notebook</option>
+                <option value="liquid">💧 Apple Vision</option>
+                <option value="90s">💾 90s Retro</option>
+                <option value="80s">🕹️ 80s Synth</option>
+                <option value="70s">☮️ 70s Pop Art</option>
+                <option value="00s">💿 00s Y2K</option>
+            </select>
+
+            <div class="lang-dropdown">
+                <button onclick="toggleLangMenu()" class="action-btn lang-btn"><span id="currentFlag">🇹🇷</span> ▼</button>
+                <div id="langMenu" class="lang-content">
+                    <a onclick="setLanguage('TR')"><svg class="flag-icon" viewBox="0 0 1200 800"><path fill="#E30A17" d="M0 0h1200v800H0z"/><circle cx="425" cy="400" r="200" fill="#fff"/><circle cx="475" cy="400" r="160" fill="#E30A17"/><path fill="#fff" d="M583.334 400l180.901 58.779-111.804-153.885v190.212l111.804-153.885z"/></svg> TR</a>
+                    <a onclick="setLanguage('EN')"><svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg> EN</a>
+                </div>
+            </div>
+
+            <a href="" id="mailLink" class="action-btn icon-only"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            <a href="" id="cvLink" download class="action-btn"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> <span id="cvText">CV</span></a>
+            <a href="" id="behanceLink" target="_blank" class="action-btn"><svg viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.813-5.92 3.561 0 5.112 2.563 5.112 5.087 0 .583-.023 1.05-.064 1.488h-8.293c.036 1.831 1.258 3.109 3.093 3.109 1.547 0 2.651-.837 2.913-1.638l2.091.549zm-3.047-3.846c-.035-1.838-1.348-2.684-2.593-2.684-1.391 0-2.483.911-2.588 2.684h5.181zm-10.679 3.846h-5v-11h5.111c1.928 0 3.298.544 3.298 2.41 0 1.342-.871 2.113-1.889 2.361 1.144.316 2.302 1.218 2.302 2.766 0 2.115-1.693 3.463-3.822 3.463zm-2.316-8.52h2.246c.928 0 1.56.326 1.56 1.288 0 .931-.632 1.272-1.56 1.272h-2.246v-2.56zm0 6.079h2.519c1.077 0 1.791.433 1.791 1.485 0 1.058-.802 1.435-1.791 1.435h-2.519v-2.92z"/></svg> BEHANCE</a>
+            <a href="" id="linkedinLink" target="_blank" class="action-btn icon-only"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-tab active" onclick="switchTab('experience')" id="tabExp">EXPERIENCE</div>
+        <div class="nav-tab" onclick="switchTab('projects')" id="tabWork">PROJECTS</div>
+        <div class="nav-tab" onclick="switchTab('life')" id="tabEnjoy">WHAT I ENJOY</div>
+    </nav>
+
+    <div id="expSection" class="content-section active">
+        <div class="exp-container">
+            
+            <div class="edu-vol-container">
+                <div class="sub-nav">
+                    <div class="sub-tab active" onclick="switchSubTab('edu')" id="subEdu">EDUCATION</div>
+                    <div class="sub-tab" onclick="switchSubTab('vol')" id="subVol">VOLUNTEER</div>
+                </div>
+
+                <div id="eduContent" class="info-content active">
+                    <div class="info-item">
+                        <div class="info-role" id="eduSchool"></div>
+                        <div class="info-meta" id="eduDept"></div>
+                        <div class="info-meta" id="eduDate"></div>
+                        <a href="" id="eduLangLink" target="_blank" style="font-weight: bold; text-decoration: underline; color: var(--accent-main);"></a>
+                    </div>
+                </div>
+
+                <div id="volContent" class="info-content">
+                    <div id="volList"></div>
+                </div>
+            </div>
+
+            <h2 id="titleWork" style="font-family: var(--font-head); font-size: 2rem; margin-bottom: 30px;">WORK EXPERIENCE</h2>
+            <div class="timeline-container" id="expList"></div>
+        </div>
+    </div>
+
+    <div id="workSection" class="content-section">
+        <div class="grid" id="projectGrid"></div>
+    </div>
+
+    <div id="lifeSection" class="content-section">
+        <div class="life-layout">
+            <div class="life-bio">
+                <img src="" id="bioImg">
+                <h2>PLAYER 1</h2>
+                <p id="bioText"></p>
+                <div id="statsContainer"></div>
+            </div>
+            <div class="life-gallery-wrapper">
+                <div class="filter-buttons" id="filterContainer"></div>
+                <div class="life-grid" id="lifeGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lb-btn lb-close" onclick="closeLightbox()">X</button>
+        <button class="lb-btn lb-prev" onclick="changeSlide(-1)">&#8592;</button>
+        <button class="lb-btn lb-next" onclick="changeSlide(1)">&#8594;</button>
+        <div id="lb-content-wrapper"></div>
+        <div class="lb-caption" id="lb-caption"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // GLOBALS
+        let currentLang = localStorage.getItem('siteLang') || 'TR'; 
+        let currentTheme = localStorage.getItem('siteTheme') || 'neo';
+
+        // URL'den Tab Bilgisini Al (Return için)
+        const params = new URLSearchParams(window.location.search);
+        const activeTab = params.get('tab') || 'experience'; // Varsayılan: experience
+
+        const translations = {
+            TR: { tabExp: "DENEYİM", tabWork: "PROJELER", tabEnjoy: "İLGİ ALANLARI", cvBtn: "ÖZGEÇMİŞ", titleWork: "İŞ DENEYİMİ", titleEdu: "EĞİTİM", titleVol: "GÖNÜLLÜLÜK", allBtn: "TÜMÜ", subEdu: "EĞİTİM", subVol: "GÖNÜLLÜLÜK" },
+            EN: { tabExp: "EXPERIENCE", tabWork: "PROJECTS", tabEnjoy: "WHAT I ENJOY", cvBtn: "RESUME", titleWork: "WORK EXPERIENCE", titleEdu: "EDUCATION", titleVol: "VOLUNTEER", allBtn: "ALL", subEdu: "EDUCATION", subVol: "VOLUNTEER" }
+        };
+
+        function init() {
+            // Theme Init
+            document.body.setAttribute('data-theme', currentTheme);
+            document.getElementById('styleSwitcher').value = currentTheme;
+
+            // Info
+            document.getElementById('userName').innerText = aboutData.name;
+            document.getElementById('userTitle').innerText = aboutData.title;
+            const imgPath = `life/${aboutData.profileImage}`;
+            document.getElementById('bioImg').src = imgPath;
+            document.getElementById('headerProfileImg').src = imgPath;
+
+            document.getElementById('cvLink').href = aboutData.cvFile;
+            document.getElementById('mailLink').href = `mailto:${aboutData.socials.email}`;
+            document.getElementById('behanceLink').href = aboutData.socials.behance;
+            document.getElementById('linkedinLink').href = aboutData.socials.linkedin;
+            
+            // Education
+            document.getElementById('eduSchool').innerText = aboutData.education.school;
+            document.getElementById('eduDate').innerText = aboutData.education.date;
+            document.getElementById('eduLangLink').innerText = aboutData.education.langInfo;
+            document.getElementById('eduLangLink').href = aboutData.education.certLink;
+
+            // Stats
+            const stats = document.getElementById('statsContainer');
+            stats.innerHTML = '';
+            aboutData.interests.forEach(i => stats.innerHTML += `<span style="display:block; margin-bottom:5px; font-weight:bold;">${i}</span>`);
+
+            setLanguage(currentLang);
+            switchTab(activeTab); // URL'den gelen tabı aç
+        }
+
+        function changeTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('siteTheme', theme);
+            // Re-render project cards to update hrefs
+            renderContent();
+        }
+
+        function toggleLangMenu() { document.getElementById("langMenu").classList.toggle("show"); }
+        window.onclick = function(e) { if (!e.target.matches('.lang-btn') && !e.target.matches('.lang-btn span')) { var d = document.getElementsByClassName("lang-content"); for (var i = 0; i < d.length; i++) { if (d[i].classList.contains('show')) d[i].classList.remove('show'); }}}
+
+        function setLanguage(lang) {
+            currentLang = lang; localStorage.setItem('siteLang', lang);
+            document.getElementById('currentFlag').innerText = lang === 'TR' ? "🇹🇷" : "🇬🇧";
+            const t = translations[lang];
+            document.getElementById('tabExp').innerText = t.tabExp; document.getElementById('tabWork').innerText = t.tabWork; document.getElementById('tabEnjoy').innerText = t.tabEnjoy;
+            document.getElementById('cvText').innerText = t.cvBtn; document.getElementById('titleWork').innerText = t.titleWork;
+            document.getElementById('subEdu').innerText = t.subEdu; document.getElementById('subVol').innerText = t.subVol;
+            renderContent();
+        }
+
+        function renderContent() {
+            document.getElementById('bioText').innerText = currentLang === 'TR' ? aboutData.bioTR : aboutData.bioEN;
+            document.getElementById('eduDept').innerText = currentLang === 'TR' ? aboutData.education.deptTR : aboutData.education.deptEN;
+
+            // VOLUNTEER LIST
+            const volList = document.getElementById('volList');
+            volList.innerHTML = '';
+            aboutData.volunteer.forEach(v => {
+                const desc = currentLang === 'TR' ? v.descTR : v.descEN;
+                volList.innerHTML += `<div class="info-item"><div class="info-role">${v.role}</div><div class="info-meta">${v.org} • ${v.date}</div><div class="info-desc">${desc}</div></div>`;
+            });
+
+            // PROJECTS GRID (Sorted Video First)
+            const pGrid = document.getElementById('projectGrid');
+            pGrid.innerHTML = '';
+            const sortedProjects = [...projectsData].sort((a, b) => {
+                const aHasVideo = a.media.some(m => m.type === 'video');
+                const bHasVideo = b.media.some(m => m.type === 'video');
+                return (aHasVideo === bHasVideo) ? 0 : aHasVideo ? -1 : 1;
+            });
+
+            sortedProjects.forEach(p => {
+                const cover = p.media[0];
+                const filePath = `${p.folder}/${cover.file}`;
+                
+                // Video Icon Logic
+                let mediaHTML = '';
+                let iconHTML = '';
+                
+                if (cover.type === 'video') {
+                    mediaHTML = `<video src="${filePath}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>`;
+                    iconHTML = `<div class="video-indicator"></div>`;
+                } else {
+                    mediaHTML = `<img src="${filePath}" loading="lazy">`;
+                }
+
+                // Href includes activeTab so back button works
+                let currentActiveTab = document.querySelector('.nav-tab.active').id === 'tabWork' ? 'projects' : (document.querySelector('.nav-tab.active').id === 'tabExp' ? 'experience' : 'life');
+
+                pGrid.innerHTML += `
+                    <div class="card" onclick="window.location.href='project.html?id=${p.id}&lang=${currentLang}&theme=${document.body.getAttribute('data-theme')}&tab=${currentActiveTab}'">
+                        <div class="card-media">
+                            ${iconHTML}
+                            ${mediaHTML}
+                        </div>
+                        <div class="card-content">
+                            <span class="card-cat">${p.category}</span>
+                            <h3 class="card-title">${p.title}</h3>
+                        </div>
+                    </div>`;
+            });
+
+            // EXPERIENCE TIMELINE
+            const expList = document.getElementById('expList');
+            expList.innerHTML = '';
+            aboutData.experience.forEach(e => {
+                const desc = currentLang === 'TR' ? e.descTR : e.descEN;
+                expList.innerHTML += `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">${e.date}</div><div class="timeline-content"><div class="timeline-header"><img src="${e.logo}" class="company-logo" onerror="this.style.display='none'"><div><h3 class="timeline-role">${e.role}</h3><span class="timeline-company">@ ${e.company}</span></div></div><div class="timeline-desc">${desc}</div></div></div>`;
+            });
+
+            // LIFE FILTERS
+            const activeBtn = document.querySelector('.filter-btn.active');
+            initGalleryFilters(activeBtn ? activeBtn.dataset.cat : 'all');
+        }
+
+        const lifeGrid = document.getElementById('lifeGrid');
+        const filterContainer = document.getElementById('filterContainer');
+        let currentGalleryItems = aboutData.lifeGallery;
+
+        function initGalleryFilters(activeCat = 'all') {
+            const categories = ['all', ...new Set(aboutData.lifeGallery.map(i => i.category))];
+            filterContainer.innerHTML = '';
+            const allText = currentLang === 'TR' ? "TÜMÜ" : "ALL";
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `filter-btn ${cat === activeCat ? 'active' : ''}`;
+                btn.innerText = cat === 'all' ? allText : cat.toUpperCase();
+                btn.dataset.cat = cat;
+                btn.onclick = () => filterGallery(cat, btn);
+                filterContainer.appendChild(btn);
+            });
+            if(activeCat === 'all') renderGallery(aboutData.lifeGallery);
+            else renderGallery(aboutData.lifeGallery.filter(i => i.category === activeCat));
+        }
+
+        function renderGallery(items) {
+            lifeGrid.innerHTML = '';
+            items.forEach((item, index) => {
+                const isVideo = item.type === 'video';
+                const videoBadge = isVideo ? '<div class="video-icon"></div>' : '';
+                const content = isVideo ? `<video src="life/${item.file}" muted></video>` : `<img src="life/${item.file}" loading="lazy">`;
+                const div = document.createElement('div');
+                div.className = 'life-item';
+                div.innerHTML = `${videoBadge}${content}`;
+                div.onclick = () => openLightbox(index);
+                lifeGrid.appendChild(div);
+            });
+            currentGalleryItems = items;
+        }
+
+        function filterGallery(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+            if(cat === 'all') renderGallery(aboutData.lifeGallery);
+            else renderGallery(aboutData.lifeGallery.filter(i => i.category === cat));
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            
+            if(tab === 'projects') { document.getElementById('workSection').classList.add('active'); document.getElementById('tabWork').classList.add('active'); }
+            else if (tab === 'experience') { document.getElementById('expSection').classList.add('active'); document.getElementById('tabExp').classList.add('active'); }
+            else { document.getElementById('lifeSection').classList.add('active'); document.getElementById('tabEnjoy').classList.add('active'); }
+            
+            // Re-render to update back-links
+            renderContent();
+            window.scrollTo(0, 0);
+        }
+
+        function switchSubTab(type) {
+            document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.info-content').forEach(c => c.classList.remove('active'));
+            
+            if(type === 'edu') {
+                document.getElementById('subEdu').classList.add('active');
+                document.getElementById('eduContent').classList.add('active');
+            } else {
+                document.getElementById('subVol').classList.add('active');
+                document.getElementById('volContent').classList.add('active');
+            }
+        }
+
+        const lightbox = document.getElementById('lightbox');
+        const lbWrapper = document.getElementById('lb-content-wrapper');
+        const lbCaption = document.getElementById('lb-caption');
+        let currentIndex = 0;
+        function openLightbox(index) { currentIndex = index; updateLightboxContent(); lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { lightbox.classList.remove('active'); lbWrapper.innerHTML = ''; document.body.style.overflow = 'auto'; }
+        function changeSlide(d) { currentIndex += d; if (currentIndex >= currentGalleryItems.length) currentIndex = 0; if (currentIndex < 0) currentIndex = currentGalleryItems.length - 1; updateLightboxContent(); }
+        function updateLightboxContent() {
+            const item = currentGalleryItems[currentIndex];
+            lbCaption.innerText = `${item.category} • ${item.caption || ''}`;
+            if(item.type === 'video') lbWrapper.innerHTML = `<video src="life/${item.file}" controls autoplay class="lightbox-content"></video>`;
+            else lbWrapper.innerHTML = `<img src="life/${item.file}" class="lightbox-content">`;
+        }
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+        });
+
+        init();
+        renderGallery(aboutData.lifeGallery);
+    </script>
+</body>
+</html>

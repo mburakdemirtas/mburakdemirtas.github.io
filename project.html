@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&family=Patrick+Hand&family=Abril+Fatface&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. THEME ENGINE (INDEX.HTML İLE BİREBİR AYNI)
+           ========================================= */
+
+        /* A. NEO-BRUTALISM */
+        :root {
+            --bg-body: #f4f3ee; --bg-card: #ffffff; --text-main: #0d0d0d; --text-sec: #555555;
+            --accent-main: #ffdc5e; --accent-sec: #a3d5ff; --border: 4px solid #0d0d0d;
+            --shadow: 6px 6px 0 #0d0d0d; --radius: 0px; --font-head: 'Arial Black', sans-serif;
+            --font-body: 'Courier New', monospace; --bg-image: none; --backdrop: none;
+        }
+
+        /* B. NOTEBOOK */
+        [data-theme="notebook"] {
+            --bg-body: #fdfbf7; --bg-card: #fff; --text-main: #2c3e50; --text-sec: #555;
+            --accent-main: #ff6b6b; --accent-sec: #feca57; --border: 2px solid #2c3e50;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.1); --radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            --font-head: 'Patrick Hand', cursive; --font-body: 'Patrick Hand', cursive;
+            --bg-image: repeating-linear-gradient(white 0px, white 24px, #a4b0be 25px);
+        }
+
+        /* C. APPLE LIQUID (DARK MODE FIXED) */
+        [data-theme="liquid"] {
+            --bg-body: #000000;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --text-main: #ffffff;
+            --text-sec: #d1d1d6;
+            --accent-main: #0a84ff;
+            --accent-sec: rgba(255,255,255,0.1);
+            --border: 1px solid rgba(255,255,255,0.1);
+            --shadow: 0 10px 40px rgba(0,0,0,0.5);
+            --radius: 24px;
+            --font-head: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --backdrop: blur(40px) saturate(150%);
+            --bg-image: radial-gradient(circle at 10% 20%, #1a0b2e 0%, transparent 40%), radial-gradient(circle at 90% 80%, #001529 0%, transparent 40%);
+        }
+
+        /* D. 90s RETRO */
+        [data-theme="90s"] {
+            --bg-body: #008080; --bg-card: #c0c0c0; --text-main: #000; --text-sec: #444;
+            --accent-main: #000080; --accent-sec: #fff; --border: 2px solid #000;
+            --shadow: 2px 2px 0 #000; --radius: 0; --font-head: 'Arial', sans-serif;
+            --font-body: 'Times New Roman', serif; --bg-image: none; --cursor: auto;
+        }
+
+        /* E. 70s POP ART / DINER (NEW COLORS) */
+        [data-theme="70s"] {
+            --bg-body: #FFF8E7; --bg-card: #FFFFFF; --text-main: #2D3436; --text-sec: #636e72;
+            --accent-main: #E55039; --accent-sec: #F8C291; --border: 3px solid #2D3436;
+            --shadow: 6px 6px 0 #74B9FF; --radius: 12px; --font-head: 'Abril Fatface', cursive;
+            --font-body: 'Inter', sans-serif; --bg-image: radial-gradient(#E55039 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* F. 80s SYNTHWAVE */
+        [data-theme="80s"] {
+            --bg-body: #090014; --bg-card: #120024; --text-main: #ff00de; --text-sec: #00f0ff;
+            --accent-main: #ffe600; --accent-sec: #220033; --border: 2px solid #ff00de;
+            --shadow: 0 0 10px #ff00de; --radius: 0; --font-head: 'Press Start 2P', cursive;
+            --font-body: 'VT323', monospace; --bg-image: linear-gradient(transparent 95%, #ff00de 95%), linear-gradient(90deg, transparent 95%, #ff00de 95%);
+            background-size: 40px 40px; --cursor: crosshair;
+        }
+
+        /* G. 00s Y2K */
+        [data-theme="00s"] {
+            --bg-body: #ffffff; --bg-card: #f0f4f8; --text-main: #000; --text-sec: #555;
+            --accent-main: #00ff00; --accent-sec: #dcdcdc; --border: 1px solid #999;
+            --shadow: inset 1px 1px 3px #fff, inset -1px -1px 3px #aaa; --radius: 12px;
+            --font-head: 'Orbitron', sans-serif; --font-body: 'Arial', sans-serif;
+            --bg-image: repeating-linear-gradient(45deg, #f0f0f0 0, #f0f0f0 1px, #fff 1px, #fff 5px);
+        }
+
+        /* =========================================
+           2. PAGE STYLES
+           ========================================= */
+        * { box-sizing: border-box; }
+        body { margin: 0; background-color: var(--bg-body); background-image: var(--bg-image); color: var(--text-main); font-family: var(--font-body); padding-bottom: 50px; overflow-y: scroll; cursor: var(--cursor); transition: background 0.3s; }
+        
+        /* 80s Overlay */
+        body[data-theme="80s"]::after {
+            content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none;
+        }
+
+        nav { padding: 20px; border-bottom: var(--border); background: var(--bg-card); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; backdrop-filter: var(--backdrop); }
+        [data-theme="liquid"] nav { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); margin: 10px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .back-btn { text-decoration: none; font-weight: bold; font-size: 1.2rem; border: var(--border); padding: 5px 15px; background: var(--bg-card); color: var(--text-main); box-shadow: var(--shadow); border-radius: var(--radius); font-family: var(--font-head); transition: 0.2s; }
+        .back-btn:hover { background: var(--accent-main); color: var(--bg-card); transform: translate(-2px, -2px); }
+        
+        [data-theme="90s"] .back-btn { border: 2px outset #fff; background: #c0c0c0; color: #000; box-shadow: none; }
+        [data-theme="90s"] .back-btn:active { border: 2px inset #fff; }
+
+        .project-hero { padding: 60px 20px; text-align: center; border-bottom: var(--border); background: var(--bg-card); backdrop-filter: var(--backdrop); }
+        [data-theme="liquid"] .project-hero { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        h1 { font-family: var(--font-head); font-size: 3rem; text-transform: uppercase; margin: 0; color: var(--text-main); }
+        [data-theme="liquid"] h1 { text-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+        .desc { max-width: 800px; margin: 20px auto; font-size: 1.1rem; line-height: 1.6; color: var(--text-main); text-align: left; }
+        /* Yeni: Description içindeki HTML tagleri için stil */
+        .desc ul { padding-left: 20px; }
+        .desc li { margin-bottom: 5px; }
+        .desc strong { color: var(--accent-main); }
+        [data-theme="neo"] .desc strong { background: var(--text-main); color: #fff; padding: 0 4px; }
+
+        .behance-link { display: inline-block; margin-top: 20px; color: var(--accent-main); text-decoration: underline; font-weight: bold; font-size: 1.2rem; background: var(--text-main); color: var(--bg-card); padding: 5px 10px; border-radius: 4px; }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 20px; padding: 40px; max-width: 1600px; margin: 0 auto; }
+        .gallery-item { border: var(--border); box-shadow: var(--shadow); background: var(--bg-card); border-radius: var(--radius); cursor: zoom-in; transition: transform 0.2s; position: relative; overflow: hidden; }
+        .gallery-item:hover { transform: scale(1.02); z-index: 10; }
+        [data-theme="90s"] .gallery-item { border: 2px inset #fff; box-shadow: none; }
+        [data-theme="liquid"] .gallery-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .gallery-item img, .gallery-item video { width: 100%; height: auto; display: block; }
+
+        /* ICONS */
+        .overlay-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(0,0,0,0.4); border: 3px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 5; }
+        .gallery-item:hover .overlay-icon { opacity: 1; }
+        .overlay-icon svg { width: 30px; height: 30px; fill: #fff; }
+        .video-badge { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; background: rgba(0,0,0,0.8); border: 2px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 4; }
+        .video-badge::after { content: ''; border-left: 12px solid #fff; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 4px; }
+
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border: 4px solid #fff; }
+        .lb-btn { position: absolute; background: none; border: none; color: #fff; font-size: 3rem; cursor: pointer; padding: 20px; }
+        .lb-close { top: 20px; right: 20px; }
+        .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+        .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+        @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" id="backBtn" class="back-btn">← BACK</a>
+        <div style="font-weight: bold;" id="catDisplay">CATEGORY</div>
+    </nav>
+
+    <header class="project-hero">
+        <h1 id="pTitle">Loading...</h1>
+        <div class="desc" id="pDesc"></div>
+        <a href="#" id="pLink" target="_blank" class="behance-link">View on Behance ↗</a>
+    </header>
+
+    <div class="gallery" id="pGallery"></div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lb-btn lb-close" onclick="closeLightbox()">X</button>
+        <button class="lb-btn lb-prev" onclick="changeSlide(-1)">&#8592;</button>
+        <button class="lb-btn lb-next" onclick="changeSlide(1)">&#8594;</button>
+        <div id="lb-content-wrapper"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const projectId = params.get('id');
+        const lang = params.get('lang') || localStorage.getItem('siteLang') || 'TR';
+        
+        // Tab Persistence Logic
+        const tab = params.get('tab') || 'projects';
+        
+        // Theme Persistence Logic
+        const theme = params.get('theme') || localStorage.getItem('siteTheme') || 'neo';
+        document.body.setAttribute('data-theme', theme);
+
+        const project = projectsData.find(p => p.id === projectId);
+
+        if (!project) {
+            document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px;'>Project Not Found :(</h1>";
+        } else {
+            document.title = project.title;
+            document.getElementById('pTitle').innerText = project.title;
+            // ÖNEMLİ: innerHTML kullanıyoruz ki bullet pointler çalışsın
+            document.getElementById('pDesc').innerHTML = lang === 'TR' ? project.descriptionTR : project.descriptionEN;
+            document.getElementById('catDisplay').innerText = project.category;
+            document.getElementById('pLink').href = project.behance;
+            
+            const backBtn = document.getElementById('backBtn');
+            backBtn.innerText = lang === 'TR' ? "← GERİ" : "← BACK";
+            // Return to the exact tab and keep language/theme settings
+            backBtn.href = `index.html?tab=${tab}&lang=${lang}&theme=${theme}`;
+
+            const galleryDiv = document.getElementById('pGallery');
+            project.media.forEach((m, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                const path = `${project.folder}/${m.file}`;
+                
+                const badge = m.type === 'video' ? '<div class="video-badge"></div>' : '';
+                const zoomIcon = `<div class="overlay-icon"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></div>`;
+
+                const content = m.type === 'video' 
+                    ? `<video src="${path}" muted></video>` 
+                    : `<img src="${path}" loading="lazy">`;
+
+                item.innerHTML = `${badge}${zoomIcon}${content}`;
+                item.onclick = () => openLightbox(index);
+                galleryDiv.appendChild(item);
+            });
+        }
+
+        const lightbox = document.getElementById('lightbox');
+        const lbWrapper = document.getElementById('lb-content-wrapper');
+        let currentIndex = 0;
+
+        function openLightbox(index) { currentIndex = index; updateLightbox(); lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { lightbox.classList.remove('active'); lbWrapper.innerHTML = ''; document.body.style.overflow = 'auto'; }
+        function changeSlide(dir) { currentIndex += dir; if (currentIndex >= project.media.length) currentIndex = 0; if (currentIndex < 0) currentIndex = project.media.length - 1; updateLightbox(); }
+        function updateLightbox() {
+            const m = project.media[currentIndex];
+            const path = `${project.folder}/${m.file}`;
+            if(m.type === 'video') lbWrapper.innerHTML = `<video src="${path}" controls autoplay class="lightbox-content"></video>`;
+            else lbWrapper.innerHTML = `<img src="${path}" class="lightbox-content">`;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+        });
+    </script>
+</body>
+</html>
